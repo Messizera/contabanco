@@ -1,12 +1,12 @@
 import java.util.Scanner;
 import java.util.Locale;
-import java.util.ArrayList; // Importe a classe ArrayList
+import java.util.ArrayList;
 
 public class Contaterminal {
     public static void main(String[] args) {
         int saldo = 0;
         Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
-        ArrayList<String> historico = new ArrayList<>(); // Crie uma lista para o histórico
+        ArrayList<String> historico = new ArrayList<>();
 
         System.out.println("Digite seu Nome");
         String nomeCliente = scanner.next();
@@ -18,48 +18,48 @@ public class Contaterminal {
         int numero = scanner.nextInt();
 
         System.out.println("Digite sua senha");
-        String senha = scanner.next();
+        String senhaCliente = scanner.next(); // Renomeada para evitar conflito
 
-        System.out.println("Olá " + nomeCliente + ", obrigado por criar uma conta em nosso banco, sua agência é " + agencia + ", conta " + numero + " e seu saldo " + saldo + " já está disponível para saque");
+        System.out.println("Olá " + nomeCliente + ", obrigado por criar uma conta em nosso banco. Sua agência é " + agencia + ", conta " + numero + " e seu saldo é " + saldo + " reais.");
 
-        int depositar = 0;
-        while (depositar != 4) {
-            
-            
-            System.out.println("Digite 1 - para realizar um depósito");
-            System.out.println("Digite 2 - para realizar um saque");
-            System.out.println("Digite 3 - para verificar seu saldo");
-            System.out.println("Digite 4 - para sair");
-            depositar = scanner.nextInt();
-            
+        int opcao = 0;
+        while (opcao != 4) {
+            System.out.println("\nOpções:");
+            System.out.println("1 - Realizar depósito");
+            System.out.println("2 - Realizar saque");
+            System.out.println("3 - Verificar saldo");
+            System.out.println("4 - Sair");
+            opcao = scanner.nextInt();
+
             System.out.println("Digite sua senha");
-            String senha1 = scanner.next();
-             if (senha1.equals("senha") == senha) 
-             else System.out.println("Senha incorreta, tente novamente");
+            String senhaDigitada = scanner.next();
+            if (senhaDigitada.equals(senhaCliente)) {
+                if (opcao == 1) {
+                    System.out.print("Digite o valor a ser depositado: ");
+                    int valorDeposito = scanner.nextInt();
+                    saldo += valorDeposito;
+                    historico.add("Depósito de " + valorDeposito + " reais");
+                    System.out.println("Seu saldo atual é de " + saldo + " reais.");
+                } else if (opcao == 2) {
+                    System.out.print("Digite o valor de saque: ");
+                    int valorSaque = scanner.nextInt();
 
-            if (depositar == 1) {
-                System.out.print("Digite o Valor a ser depositado: ");
-                int valordeposito = scanner.nextInt();
-                saldo += valordeposito;
-                historico.add("Depósito de " + valordeposito + " reais"); // Adicione ao histórico
-                System.out.println("Seu saldo atual é de " + saldo + " reais");
-            } else if (depositar == 2) {
-                System.out.print("Digite o Valor de saque: ");
-                int valorsaque = scanner.nextInt();
-
-                if (saldo >= valorsaque) {
-                    saldo -= valorsaque;
-                    historico.add("Saque de " + valorsaque + " reais"); // Adicione ao histórico
-                    System.out.println("Saque efetuado no valor de " + valorsaque + " reais. Seu saldo atual é de " + saldo + " reais");
+                    if (saldo >= valorSaque) {
+                        saldo -= valorSaque;
+                        historico.add("Saque de " + valorSaque + " reais");
+                        System.out.println("Saque efetuado no valor de " + valorSaque + " reais. Seu saldo atual é de " + saldo + " reais.");
+                    } else {
+                        System.out.println("Saldo insuficiente.");
+                    }
+                } else if (opcao == 3) {
+                    System.out.println("Seu saldo é de " + saldo + " reais.");
+                } else if (opcao == 4) {
+                    System.out.println("Obrigado por utilizar o banco.");
                 } else {
-                    System.out.println("Saldo insuficiente");
+                    System.out.println("Opção incorreta. Digite novamente.");
                 }
-            } else if (depositar == 3) {
-                System.out.println("Seu saldo é de " + saldo + " reais");
-            } else if (depositar == 4) {
-                System.out.println("Obrigado por utilizar o banco");
             } else {
-                System.out.println("Opção incorreta");
+                System.out.println("Senha incorreta. Tente novamente.");
             }
         }
 
@@ -68,6 +68,8 @@ public class Contaterminal {
         for (String transacao : historico) {
             System.out.println(transacao);
         }
+
+        scanner.close(); // Não se esqueça de fechar o Scanner
     }
 }
- 
+
