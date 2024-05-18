@@ -31,6 +31,11 @@ public class Contaterminal {
             System.out.println("Digite 3 - para verificar seu saldo");
             System.out.println("Digite 4 - para sair");
             depositar = scanner.nextInt();
+            
+            System.out.println("Digite sua senha");
+            String senha1 = scanner.next();
+             if (senha1.equals("senha") == senha) 
+             else System.out.println("Senha incorreta, tente novamente");
 
             if (depositar == 1) {
                 System.out.print("Digite o Valor a ser depositado: ");
