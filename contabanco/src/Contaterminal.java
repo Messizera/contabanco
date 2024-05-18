@@ -18,10 +18,11 @@ public class Contaterminal {
         System.out.println("Olá " + nomeCliente + ", obrigado por criar uma conta em nosso banco, sua agência é " + agencia + ", conta " + numero + " e seu saldo " + saldo + " já está disponível para saque");
 
         int depositar = 0;
-        while (depositar != 3) {
+        while (depositar != 4) {
             System.out.println("Digite 1 - para realizar um depósito");
             System.out.println("Digite 2 - para realizar um saque");
-            System.out.println("Digite 3 - para sair");
+            System.out.println("Digite 3 - para verificar seu saldo");
+            System.out.println("Digite 4 - para sair");
             depositar = scanner.nextInt();
 
             if (depositar == 1) {
@@ -35,11 +36,13 @@ public class Contaterminal {
 
                 if (saldo >= valorsaque) {
                     saldo -= valorsaque;
-                    System.out.println("Saque efetuado no valor de " + valorsaque + " reais,Seu saldo atual é de " + saldo + " reais");
+                    System.out.println("Saque efetuado no valor de " + valorsaque + " reais. Seu saldo atual é de " + saldo + " reais");
                 } else {
                     System.out.println("Saldo insuficiente");
                 }
             } else if (depositar == 3) {
+                System.out.println("Seu saldo é de " + saldo + " reais");
+            } else if (depositar == 4) {
                 System.out.println("Obrigado por utilizar o banco");
             } else {
                 System.out.println("Opção incorreta");
@@ -47,5 +50,4 @@ public class Contaterminal {
         }
     }
 }
-    
     
