@@ -34,29 +34,33 @@ public class Contaterminal {
             System.out.println("Digite sua senha");
             String senhaDigitada = scanner.next();
             if (senhaDigitada.equals(senhaCliente)) {
-                if (opcao == 1) {
-                    System.out.print("Digite o valor a ser depositado: ");
-                    int valorDeposito = scanner.nextInt();
-                    saldo += valorDeposito;
-                    historico.add("Depósito de " + valorDeposito + " reais");
-                    System.out.println("Seu saldo atual é de " + saldo + " reais.");
-                } else if (opcao == 2) {
-                    System.out.print("Digite o valor de saque: ");
-                    int valorSaque = scanner.nextInt();
+                try {
+                    if (opcao == 1) {
+                        System.out.print("Digite o valor a ser depositado: ");
+                        int valorDeposito = scanner.nextInt();
+                        saldo += valorDeposito;
+                        historico.add("Depósito de " + valorDeposito + " reais");
+                        System.out.println("Seu saldo atual é de " + saldo + " reais.");
+                    } else if (opcao == 2) {
+                        System.out.print("Digite o valor de saque: ");
+                        int valorSaque = scanner.nextInt();
 
-                    if (saldo >= valorSaque) {
-                        saldo -= valorSaque;
-                        historico.add("Saque de " + valorSaque + " reais");
-                        System.out.println("Saque efetuado no valor de " + valorSaque + " reais. Seu saldo atual é de " + saldo + " reais.");
+                        if (saldo >= valorSaque) {
+                            saldo -= valorSaque;
+                            historico.add("Saque de " + valorSaque + " reais");
+                            System.out.println("Saque efetuado no valor de " + valorSaque + " reais. Seu saldo atual é de " + saldo + " reais.");
+                        } else {
+                            System.out.println("Saldo insuficiente.");
+                        }
+                    } else if (opcao == 3) {
+                        System.out.println("Seu saldo é de " + saldo + " reais.");
+                    } else if (opcao == 4) {
+                        System.out.println("Obrigado por utilizar o banco.");
                     } else {
-                        System.out.println("Saldo insuficiente.");
+                        System.out.println("Opção incorreta. Digite novamente.");
                     }
-                } else if (opcao == 3) {
-                    System.out.println("Seu saldo é de " + saldo + " reais.");
-                } else if (opcao == 4) {
-                    System.out.println("Obrigado por utilizar o banco.");
-                } else {
-                    System.out.println("Opção incorreta. Digite novamente.");
+                } catch (Exception e) {
+                    System.out.println("Ocorreu um erro: " + e.getMessage());
                 }
             } else {
                 System.out.println("Senha incorreta. Tente novamente.");
