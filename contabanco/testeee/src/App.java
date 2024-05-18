@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Locale;
 
-public class Contaterminal {
+public class App {
     public static void main(String[] args) {
         int saldo = 0;
         Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
@@ -35,7 +35,7 @@ public class Contaterminal {
 
                 if (saldo >= valorsaque) {
                     saldo -= valorsaque;
-                    System.out.println("Saque efetuado no valor de " + valorsaque + " reais,Seu saldo atual é de " + saldo + " reais");
+                    System.out.println("Seu saldo atual é de " + saldo + " reais");
                 } else {
                     System.out.println("Saldo insuficiente");
                 }
@@ -47,5 +47,3 @@ public class Contaterminal {
         }
     }
 }
-    
-    
